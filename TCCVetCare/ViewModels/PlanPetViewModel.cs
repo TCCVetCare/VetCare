@@ -23,16 +23,13 @@ namespace TCCVetCare.ViewModels
 
         public string CreditCardNumber { get; set; }
 
-
         public string CardNumber { get; set; }
 
         public string LimitDate { get; set; }
 
-
         public string nameBoleto { get; set; }
 
         public string cpfBoleto { get; set; }
-
 
         public string KeyPix { get; set; }
     }
