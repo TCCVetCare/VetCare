@@ -160,10 +160,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PetController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,17 +173,23 @@
     </Compile>
     <Compile Include="Models\AuthenticationAuthorizeAttribute.cs" />
     <Compile Include="Models\AuthenticationModel.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\ItemsCartModel.cs" />
     <Compile Include="Models\PetModel.cs" />
     <Compile Include="Models\PlanModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AuthenticationRepository.cs" />
+    <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\DatabaseConnection.cs" />
+    <Compile Include="Repositories\ItemsCartRepository.cs" />
     <Compile Include="Repositories\PetRepository.cs" />
     <Compile Include="Repositories\PlanRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
@@ -222,9 +230,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Views\Authentication\" />
+    <Folder Include="Views\Cart\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\Pet\" />
     <Folder Include="Views\Plan\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="Views\Service\" />
     <Folder Include="Views\Supplier\" />
   </ItemGroup>
