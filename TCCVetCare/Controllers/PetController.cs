@@ -571,7 +571,7 @@ namespace TCCVetCare.Controllers
             }
 
             // Redireciona para a página de login se o usuário não estiver autenticado
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Login", "Authentication");
         }
 
         public ActionResult DeleteAnimal(int id)

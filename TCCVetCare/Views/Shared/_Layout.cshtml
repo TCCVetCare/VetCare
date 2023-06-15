@@ -24,25 +24,11 @@
                     <div>
                         <div class="hidden md:block">
                             <ul class="ml-10 flex items-baseline space-x-4">
-                                <!-- adicionar os links -->
-                                <li class="text-yellow-400">
-                                    <a href="">Home</a>
-                                </li>
-                                <li class="text-yellow-400">
-                                    <a href="">Pets</a>
-                                </li>
-                                <li class="text-yellow-400">
-                                    <a href="">Planos</a>
-                                </li>
-                                <li class="text-yellow-400">
-                                    <a href="">Produtos</a>
-                                </li>
-                                <li class="text-yellow-400">
-                                    <a href="">Serviços</a>
-                                </li>
-                                <li class="text-yellow-400">
-                                    <a href="">Agendamento</a>
-                                </li>
+                                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "text-yellow-400" })</li>
+                                <li>@Html.ActionLink("Pets", "ListPetCustomer", "Pet", new { area = "" }, new { @class = "text-yellow-400" })</li>
+                                <li>@Html.ActionLink("Planos", "ListPlanCustomer", "Plan", new { area = "" }, new { @class = "text-yellow-400" })</li>
+                                <li>@Html.ActionLink("Produtos", "Index", "Product", new { area = "" }, new { @class = "text-yellow-400" })</li>
+                                <li>@Html.ActionLink("Agendamento", "Index", "Schedule", new { area = "" }, new { @class = "text-yellow-400" })</li>
                             </ul>
                         </div>
                     </div>

@@ -232,6 +232,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Pet\ListPetCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
@@ -240,7 +241,6 @@
     <Folder Include="Views\Authentication\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Pet\" />
     <Folder Include="Views\Plan\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Schedule\" />
