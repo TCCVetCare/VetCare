@@ -47,7 +47,7 @@ namespace TCCVetCare.Controllers
             ViewBag.payments = new SelectList(payments, "Value", "Text");
         }
 
-        public void loadAnimal(string idCustomer)
+        public void loadPet(string idCustomer)
         {
             List<SelectListItem> pet = new List<SelectListItem>();
 
@@ -162,7 +162,7 @@ namespace TCCVetCare.Controllers
         public ActionResult CadPlanAnimal(string id)
         {
             string idCustomer = (string)Session["idCustomer"];
-            loadAnimal(idCustomer);
+            loadPet(idCustomer);
             Session["idPlan"] = id;
             loadFormOfPayment();
             return View();
@@ -180,7 +180,7 @@ namespace TCCVetCare.Controllers
             query.UpdateIdPlan(idPlan, idAnimal);
             planAnimal.idFormOfPayment = Request["payments"];
             string idCustomer = (string)Session["idCustomer"];
-            loadAnimal(idCustomer);
+            loadPet(idCustomer);
             loadFormOfPayment();
 
 
