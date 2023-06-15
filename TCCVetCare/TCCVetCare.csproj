@@ -229,18 +229,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Pet\ListPetCustomer.cshtml" />
+    <Content Include="Views\Authentication\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Views\Authentication\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Customer\" />
+    <Folder Include="Views\Pet\" />
     <Folder Include="Views\Plan\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Schedule\" />

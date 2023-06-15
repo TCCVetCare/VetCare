@@ -17,14 +17,14 @@ namespace TCCVetCare.Controllers
             return View();
         }
         [AllowAnonymous]
-        public ActionResult CadCustomer()
+        public ActionResult RegisterCustomer()
         {
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult CadCustomer(CustomerModel customer)
+        public ActionResult RegisterCustomer(CustomerModel customer)
         {
             if (!ModelState.IsValid)
                 return View(customer);
