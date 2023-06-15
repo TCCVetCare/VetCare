@@ -166,6 +166,7 @@
     <Compile Include="Controllers\PetController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,6 +180,7 @@
     <Compile Include="Models\PetModel.cs" />
     <Compile Include="Models\PlanModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="Repositories\PetRepository.cs" />
     <Compile Include="Repositories\PlanRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\ScheduleRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
@@ -235,6 +238,7 @@
     <Folder Include="Views\Pet\" />
     <Folder Include="Views\Plan\" />
     <Folder Include="Views\Product\" />
+    <Folder Include="Views\Schedule\" />
     <Folder Include="Views\Service\" />
     <Folder Include="Views\Supplier\" />
   </ItemGroup>
