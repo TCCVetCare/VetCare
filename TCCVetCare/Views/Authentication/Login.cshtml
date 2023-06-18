@@ -5,33 +5,78 @@
 
 @model TCCVetCare.ViewModels.AuthenticationViewModel
 
-<main class="mx-4">
-    @using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>@ViewBag.Title - VetCare</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="bg-neutral-900">
+    <main>
+        <section class="container h-auto m-auto py-8 px-4 gap-8 flex justify-center items-center flex-col lg:flex-row">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email)
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email)
-        </div>
+            <div class="w-full max-w-md mt-10 pt-10 px-4 flex flex-col justify-center items-center text-yellow-400 gap-6">
+                <h1 class="h-auto text-4xl font-semibold tracking-tighter overflow-y-hidden">Faça seu login na VetCare</h1>
+                <img src="~/Content/assets/image-login-theme-dark.svg" alt="">
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password)
-        </div>
-        <br />
-        <button type="submit" class="btn btn-primary">Login</button>
-        <br />
-        <br />
-        @ViewBag.user
+            @using (Html.BeginForm("Login", "Authentication", FormMethod.Post, new { @class = "w-full max-w-lg mt-10 mb-24 py-10 px-4 bg-neutral-700 text-gray-200 rounded-xl" }))
+            {
+                <fieldset class="w-auto max-w-md flex flex-col justify-center items-center">
+
+                    <div class="w-full flex flex-col justify-center items-center gap-2">
+                        <legend class="pb-4 uppercase">Informe seus dados para entrar</legend>
+
+                        @Html.AntiForgeryToken()
+
+                        <label for="customer-email" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.Email, new { @id = "customer-email", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Email" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+
+                                <i class="material-icons">alternate_email</i>
+
+                            </span>
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </label>
+
+                        <label for="customer-password" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.PasswordFor(m => m.Password, new { @id = "customer-password", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Senha" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </label>
+
+                    </div>
+
+                    <div class="w-full h-auto pt-10 flex flex-col gap-4 justify-center items-center">
+
+                        <button type="submit" class="w-60 md:w-72 h-12 py-3 px-6 bg-yellow-400 text-neutral-900 font-bold rounded-lg sm:w-32">
+                            Entrar
+                        </button>
+
+                        <button type="button" class="w-60 md:w-72 h-12 py-3 px-6 bg-gray-200 text-neutral-900 font-bold rounded-lg sm:w-32">
+                            Voltar
+                        </button>
+
+                        <span class="py-6 text-center text-yellow-400 font-semibold text-sm">
+                            @Html.ActionLink("Não possui conta? Cadastrar-se", "RegisterCustomer", "Customer")
+                        </span>
+                    </div>
+
+                    @ViewBag.user
+                </fieldset>
+
+            }
+        </section>
+    </main>
+</body>
+</html>
 
 
-
-
-    }
-    @Html.ActionLink("Cadastrar", "RegisterCustomer", "Customer", new { area = "" }, new { @class = "btn btn-warning" })
-
-
-</main>

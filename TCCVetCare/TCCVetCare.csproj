@@ -201,6 +201,7 @@
   <ItemGroup>
     <Content Include="Content\assets\customer-satisfaction-theme-dark.svg" />
     <Content Include="Content\assets\customer-theme-dark.svg" />
+    <Content Include="Content\assets\image-login-theme-dark.svg" />
     <Content Include="Content\assets\image-veterinary-theme-dark.svg" />
     <Content Include="Content\assets\image-veterinary-theme-light.svg" />
     <Content Include="Content\assets\pets-theme-dark.svg" />
