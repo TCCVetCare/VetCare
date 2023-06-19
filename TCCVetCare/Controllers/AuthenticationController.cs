@@ -41,20 +41,20 @@ namespace TCCVetCare.Controllers
                     FormsAuthentication.SetAuthCookie(user.role.ToString(), false);
                     if (user.role == UserRole.Admin)
                     {
-                        return RedirectToAction("ListAnimal", "Animal");
+                        return RedirectToAction("ListPet", "Pet");
                     }
                     else if (user.role == UserRole.Customer)
                     {
                         Session["idCustomer"] = user.id;
 
-                        return RedirectToAction("CadAnimal", "Animal", new { idCustomer = user.id });
+                        return RedirectToAction("Index", "Home", new { idCustomer = user.id });
 
                     }
 
                 }
 
             }
-            ModelState.AddModelError("", "Credencias invÃ¡lidas");
+            ModelState.AddModelError("", "Credencias inválidas");
             return View(model);
         }
 

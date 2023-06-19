@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Cadastrar pet";
+}
+
+
+
+@model TCCVetCare.Models.PetModel
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body class="bg-neutral-900">
+    <main>
+        <section class="container h-auto m-auto py-8 px-4 gap-8 flex justify-center items-center flex-col">
+
+            <div class="w-full max-w-md px-4 flex flex-col justify-center items-center text-yellow-400 gap-4">
+                <h1 class="text-4xl font-semibold tracking-tighter"></h1>
+                <img src="./image-customer-theme-dark.svg" alt="">
+            </div>
+
+            @using (Html.BeginForm("RegisterPet", "Pet", FormMethod.Post, new { @class = "w-full max-w-lg mt-10 mb-24 py-10 px-4 bg-neutral-700 text-gray-200 rounded-xl" }))
+            {
+                <fieldset class="w-auto max-w-md mx-auto flex flex-col justify-center items-center">
+                    <div class="w-full flex flex-col justify-center items-center gap-2 text-left">
+                        <legend class="pb-4 uppercase"></legend>
+
+                        @Html.AntiForgeryToken()
+
+                        <label for="pet-name" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.namePet, new { @id = "pet-name", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Nome do pet" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">pets</i>
+                            </span>
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.namePet)
+                            </span>
+                        </label>
+
+                        <label for="pet-age" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.agePet, new { @id = "pet-age", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Idade" })
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.agePet)
+                            </span>
+                        </label>
+
+                        <label for="pet-sex" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            <select name="pet-sex" id="pet-sex" class="w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900" required aria-label="estados">
+                                <option value="">Selecione o sexo do pet</option>
+                                @foreach (var sex in ViewBag.genderPet)
+                                {
+                                    <option value="@sex.Value">@sex.Text</option>
+                                }
+                            </select>
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.idGenderPet)
+                            </span>
+                        </label>
+
+                        <label for="pet-species" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            <select name="pet-species" id="pet-species" class="w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900" required aria-label="estados">
+                                <option value="">Selecione a espécie do pet</option>
+                                @foreach (var species in ViewBag.speciesPet)
+                                {
+                                    <option value="@species.Value">@species.Text</option>
+                                }
+                            </select>
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.idSpeciesPet)
+                            </span>
+                        </label>
+
+                        <label for="pet-breed" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            <select name="pet-breed" id="pet-breed" class="w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900" required aria-label="estados">
+                                <option value="">Selecione a raça do pet</option>
+                                @foreach (var breed in ViewBag.breedPet)
+                                {
+                                    <option value="@breed.Value">@breed.Text</option>
+                                }
+                            </select>
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.idBreedPet)
+                            </span>
+                        </label>
+
+                        <label for="file" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            <input type="file" name="file" id="file">
+                        </label>
+
+                        <div class="w-full h-auto pt-10 flex flex-col gap-4 justify-center items-center">
+
+                            <button type="submit" href="" class="w-60 md:w-72 h-12 py-3 px-6 bg-yellow-400 text-neutral-900 font-bold rounded-lg sm:w-32">
+                                Cadastrar
+                            </button>
+
+                            <button type="button" href="" class="w-60 md:w-72 h-12 py-3 px-6 bg-gray-200 text-neutral-900 font-bold rounded-lg sm:w-32">
+                                Voltar
+                            </button>
+
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </main>
+</body>
+</html>
+@ViewBag.msg
+

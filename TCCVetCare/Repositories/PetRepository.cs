@@ -17,14 +17,14 @@ namespace TCCVetCare.Repositories
         {
             // @idCustomer
             MySqlCommand cmd = new MySqlCommand(
-                "insert into tbPet values(default, @namePet, @idCustomer, @idBreedPet, @agePet, @genderPet, @idSpeciesPet, @imagePet, @IdPlan)",
+                "insert into tbPet values(default, @namePet, @idCustomer, @idBreedPet, @agePet, @idGenderPet, @idSpeciesPet, @imagePet, @IdPlan)",
                 con.ConectarBD()
             );
             cmd.Parameters.Add("@idCustomer", MySqlDbType.VarChar).Value = pet.idCustomer;
             cmd.Parameters.Add("@namePet", MySqlDbType.VarChar).Value = pet.namePet;
             cmd.Parameters.Add("@idBreedPet", MySqlDbType.VarChar).Value = pet.idBreedPet;
             cmd.Parameters.Add("@idSpeciesPet", MySqlDbType.VarChar).Value = pet.idSpeciesPet;
-            cmd.Parameters.Add("@genderPet", MySqlDbType.VarChar).Value = pet.genderPet;
+            cmd.Parameters.Add("@iGenderPet", MySqlDbType.VarChar).Value = pet.idGenderPet;
             cmd.Parameters.Add("@agePet", MySqlDbType.VarChar).Value = pet.agePet;
             cmd.Parameters.Add("@imagePet", MySqlDbType.VarChar).Value = pet.imagePet;
             cmd.Parameters.Add("@idPlan", MySqlDbType.VarChar).Value = pet.idPlan;
@@ -60,7 +60,7 @@ namespace TCCVetCare.Repositories
                         namePet = Convert.ToString(dr["nameAnimal"]),
                         idBreedPet = Convert.ToString(dr["idBreedAnimal"]),
                         idSpeciesPet = Convert.ToString(dr["idSpeciesAnimal"]),
-                        genderPet = Convert.ToString(dr["genderAnimal"]),
+                        idGenderPet = Convert.ToString(dr["idGenderPet"]),
                         agePet = Convert.ToString(dr["ageAnimal"]),
                         imagePet = Convert.ToString(dr["imageAnimal"])
                     }
@@ -100,7 +100,7 @@ namespace TCCVetCare.Repositories
                         namePet = Convert.ToString(dr["nameAnimal"]),
                         idBreedPet = Convert.ToString(dr["idBreedAnimal"]),
                         idSpeciesPet = Convert.ToString(dr["idSpeciesAnimal"]),
-                        genderPet = Convert.ToString(dr["genderAnimal"]),
+                        idGenderPet = Convert.ToString(dr["idGenderAnimal"]),
                         agePet = Convert.ToString(dr["ageAnimal"]),
                         imagePet = Convert.ToString(dr["imageAnimal"])
                     }
@@ -133,7 +133,7 @@ namespace TCCVetCare.Repositories
         public bool updatePet(PetModel pet)
         {
             MySqlCommand cmd = new MySqlCommand(
-                "update tbPet set nameAnimal=@namePet, idCustomer=@idCustomer, idBreedAnimal=@idBreedPet,  ageAnimal=@agePet, genderAnimal=@genderPet,"
+                "update tbPet set nameAnimal=@namePet, idCustomer=@idCustomer, idBreedAnimal=@idBreedPet, idGenderAnimal=@idGender, ageAnimal=@agePet, genderAnimal=@genderPet,"
                     + "idSpeciesAnimal=@idSpeciesPet, imageAnimal=@imagePet where "
                     + "idAnimal=@idPet",
                 con.ConectarBD()
@@ -142,7 +142,7 @@ namespace TCCVetCare.Repositories
             cmd.Parameters.AddWithValue("@namePet", pet.namePet);
             cmd.Parameters.AddWithValue("@idBreedPet", pet.idBreedPet);
             cmd.Parameters.AddWithValue("@idSpeciesPet", pet.idSpeciesPet);
-            cmd.Parameters.AddWithValue("@genderPet", pet.genderPet);
+            cmd.Parameters.AddWithValue("@idGenderPet", pet.idGenderPet);
             cmd.Parameters.AddWithValue("@agePet", pet.agePet);
             cmd.Parameters.AddWithValue("@idPet", pet.idPet);
             cmd.Parameters.AddWithValue("@imagePet", pet.imagePet);

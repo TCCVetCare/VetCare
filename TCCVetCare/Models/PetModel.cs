@@ -35,9 +35,9 @@ namespace TCCVetCare.Models
         public string agePet { get; set; }
 
         [Display(Name = "Genêro do pet")]
-        [Required(ErrorMessage = "Digite o genêro do pet")]
+        [Required(ErrorMessage = "selecione o genêro do pet")]
         [MaxLength(11, ErrorMessage = "O genêro do pet deve possuir no máximo 1 caracther")]
-        public string genderPet { get; set; }
+        public string idGenderPet { get; set; }
 
         [Display(Name = "Imagem do pet")]
         [Required(ErrorMessage = "Escolha uma imagem para o pet")]

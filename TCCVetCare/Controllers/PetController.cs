@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using K4os.Compression.LZ4.Internal;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +23,45 @@ namespace TCCVetCare.Controllers
         {
             return View();
         }
+
+
+        public void loadGenderPet()
+        {
+            List<SelectListItem> genderPet = new List<SelectListItem>();
+
+
+
+            using (
+                MySqlConnection con = new MySqlConnection(
+                    "Server=localhost;DataBase=teste2;User=root;pwd=12345678"
+                )
+            )
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from GenderAnimal", con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+
+
+                while (rdr.Read())
+                {
+                    genderPet.Add(
+                        new SelectListItem
+                        {
+                            Text = rdr[1].ToString(), //nome
+                            Value = rdr[0].ToString() //id do autor
+                        }
+                    );
+                }
+                con.Close(); //fechando conexÃ£o
+            }
+
+
+
+            ViewBag.genderPet = new SelectList(genderPet, "Value", "Text");
+        }
+
+        
 
         public void loadCustomer(string id)
         {
@@ -123,28 +163,30 @@ namespace TCCVetCare.Controllers
             loadCustomer(idCustomer);
             loadBreedPet();
             loadSpeciesPet();
+            loadGenderPet();
             // Verifica se o usuário está autenticado
-            if (!User.Identity.IsAuthenticated)
-            {
-                // Se não estiver autenticado, redireciona para a página de login
-                return RedirectToAction("Login", "Authentication");
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    // Se não estiver autenticado, redireciona para a página de login
+            //    return RedirectToAction("Login", "Authentication");
+            //}
             return View();
         }
 
         [HttpPost]
         public ActionResult RegisterPet(PetModel pet, HttpPostedFileBase file, string email) //string idCustomer
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 string idCustomer = (string)Session["idCustomer"];
                 loadCustomer(idCustomer);
                 loadBreedPet();
                 loadSpeciesPet();
+                loadGenderPet();
                 pet.idCustomer = Request["customer"];
                 pet.idBreedPet = Request["breedPet"];
                 pet.idSpeciesPet = Request["speciesPet"];
-
+                pet.idGenderPet = Request["genderPet"];
                 Session["idBreedAnimal"] = pet.idBreedPet;
                 Session["idSpeciesAnimal"] = pet.idSpeciesPet;
                 pet.idCustomer = idCustomer;
@@ -491,10 +533,11 @@ namespace TCCVetCare.Controllers
         {
             List<PetModel> listaAnimais = new List<PetModel>();
             MySqlCommand cmd = new MySqlCommand(
-                "SELECT tbPet.*, tbSpeciesAnimal.nameSpeciesAnimal, tbBreedAnimal.nameBreed " +
+                "SELECT tbPet.*, tbSpeciesAnimal.nameSpeciesAnimal, tbBreedAnimal.nameBreed, genderAnimal.gender " +
         "FROM tbPet " +
         "INNER JOIN tbSpeciesAnimal ON tbPet.idSpeciesAnimal = tbSpeciesAnimal.idSpeciesAnimal " +
         "INNER JOIN tbBreedAnimal ON tbPet.idBreedAnimal = tbBreedAnimal.idBreedAnimal " +
+        "INNER JOIN genderAnimal ON tbPet.idGenderAnimal = genderAnimal.idGenderAnimal " +
         "WHERE tbPet.idCustomer = @id",
                 con.ConectarBD()
             );
@@ -522,7 +565,7 @@ namespace TCCVetCare.Controllers
                         namePet = Convert.ToString(dr["nameAnimal"]),
                         idBreedPet = Convert.ToString(dr["idBreedAnimal"]),
                         idSpeciesPet = Convert.ToString(dr["idSpeciesAnimal"]),
-                        genderPet = Convert.ToString(dr["genderAnimal"]),
+                        idGenderPet = Convert.ToString(dr["idGenderAnimal"]),
                         agePet = Convert.ToString(dr["ageAnimal"]),
                         imagePet = Convert.ToString(dr["imageAnimal"])
 
@@ -540,8 +583,8 @@ namespace TCCVetCare.Controllers
         public ActionResult ListPetCustomer(string idAnimal)
         {
             // Verifica se o usuário está autenticado
-            if (User.Identity.IsAuthenticated)
-            {
+            //if (User.Identity.IsAuthenticated)
+            //{
                 //Obtém o ID do usuário logado
                 //string userId = GetCurrentUserId();
                 string idCustomer = (string)Session["idCustomer"];
@@ -565,13 +608,16 @@ namespace TCCVetCare.Controllers
                 PetModel pet = GetNameCustomerById();
                 GetNamePlanById();
 
+           
 
-                // Retorna a lista de animais para a view
-                return View(listaAnimais);
-            }
+            // Retorna a lista de animais para a view
+            return View(listaAnimais);
+            return RedirectToAction("RegisterPet", "Pet");
+
+            //}
 
             // Redireciona para a página de login se o usuário não estiver autenticado
-            return RedirectToAction("Login", "Authentication");
+
         }
 
         public ActionResult DeleteAnimal(int id)
@@ -609,7 +655,7 @@ namespace TCCVetCare.Controllers
         }
 
         [AuthenticationAuthorizeAttribute(UserRole.Admin)]
-        public ActionResult ListAnimal()
+        public ActionResult ListPet()
         {
             return View(queryPet.getPet());
         }
