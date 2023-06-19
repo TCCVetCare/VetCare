@@ -201,6 +201,7 @@
   <ItemGroup>
     <Content Include="Content\assets\customer-satisfaction-theme-dark.svg" />
     <Content Include="Content\assets\customer-theme-dark.svg" />
+    <Content Include="Content\assets\image-customer-theme-dark.svg" />
     <Content Include="Content\assets\image-login-theme-dark.svg" />
     <Content Include="Content\assets\image-veterinary-theme-dark.svg" />
     <Content Include="Content\assets\image-veterinary-theme-light.svg" />
@@ -209,6 +210,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\api-viacep.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -232,13 +234,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />
+    <Content Include="Views\Customer\RegisterCustomer.cshtml" />
+    <Content Include="Views\Customer\UpdateCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="Views\Cart\" />
-    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Pet\" />
     <Folder Include="Views\Plan\" />
     <Folder Include="Views\Product\" />

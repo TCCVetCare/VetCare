@@ -1,0 +1,137 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Cadastrar Cliente";
+}
+
+@model TCCVetCare.Models.CustomerModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body class="bg-neutral-900">
+    <main>
+        <section class="container h-auto m-auto py-8 px-4 gap-8 flex justify-center items-center flex-col">
+
+            <div class="w-full max-w-md px-4 flex flex-col justify-center items-center text-yellow-400 gap-4">
+                <h1 class="text-4xl font-semibold tracking-tighter">Informe seus dados para cadastrar-se na VetCare</h1>
+                <img src="~/Content/assets/image-customer-theme-dark.svg" alt="">
+            </div>
+
+            @using (Html.BeginForm("RegisterCustomer", "Customer", FormMethod.Post, new { @class = "w-full max-w-xl mt-10 mb-24 py-10 px-4 bg-neutral-700 text-gray-200 rounded-xl" }))
+            {
+                <fieldset class="w-auto max-w-lg mx-auto flex flex-col justify-center items-center">
+                    <div class="w-full flex flex-col justify-center items-center gap-2 text-left">
+                        <legend class="pb-4 uppercase">Dados pessoais</legend>
+
+                        @Html.AntiForgeryToken()
+
+                        <label for="customer-name" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.nameCustomer, new { @id = "customer-name", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Nome Completo" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">person</i>
+                            </span>
+                            @Html.ValidationMessageFor(m => m.nameCustomer)
+                        </label>
+
+                        <label for="customer-cpf" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.cpfCustomer, new { @id = "customer-cpf", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "CPF" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">badge</i>
+                            </span>
+                            @Html.ValidationMessageFor(m => m.cpfCustomer)
+                        </label>
+
+                        <label for="customer-phone" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.phoneCustomer, new { @id = "customer-phone", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Telefone" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">phone</i>
+                            </span>
+                            @Html.ValidationMessageFor(m => m.phoneCustomer)
+                        </label>
+
+                        <label for="customer-email" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.emailCustomer, new { @id = "customer-email", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Email" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">alternate_email</i>
+                            </span>
+                            @Html.ValidationMessageFor(m => m.emailCustomer)
+                        </label>
+
+                        <label for="customer-password" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.PasswordFor(m => m.passwordCustomer, new { @id = "customer-password", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Senha" })
+                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            @Html.ValidationMessageFor(m => m.passwordCustomer)
+                        </label>
+
+                        <legend class="py-4 uppercase text-left">Endereço</legend>
+
+                        <label for="zip-code" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.zipCode, new { @id = "zip-code", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "CEP", oninput = "searchAddressByZipCode()" })
+                            @Html.ValidationMessageFor(m => m.zipCode)
+                        </label>
+
+                        <label for="street-name" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.streetName, new { @id = "street-name", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Logradouro", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.streetName)
+                        </label>
+
+                        <label for="street-number" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.streetNumber, new { @id = "street-number", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Número do Logradouro" })
+                            @Html.ValidationMessageFor(m => m.streetNumber)
+                        </label>
+
+                        <label for="address-complement" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.addressComplement, new { @id = "address-complement", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Complemento" })
+                            @Html.ValidationMessageFor(m => m.addressComplement)
+                        </label>
+
+                        <label for="neighborhood" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.neighborhood, new { @id = "neighborhood", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Bairro", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.neighborhood)
+                        </label>
+
+                        <label for="city" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.city, new { @id = "city", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Cidade", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.city)
+                        </label>
+
+                        <label for="state" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                            @Html.TextBoxFor(m => m.state, new { @id = "state", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Estado", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.state)
+                        </label>
+
+                        <div class="w-full h-auto pt-10 flex flex-col gap-4 justify-center items-center">
+
+                            <button type="submit" href="" class="w-60 md:w-72 h-12 py-3 px-6 bg-yellow-400 text-neutral-900 font-bold rounded-lg sm:w-32">
+                                Cadastre-se
+                            </button>
+
+                            <button type="button" href="" class="w-60 md:w-72 h-12 py-3 px-6 bg-gray-200 text-neutral-900 font-bold rounded-lg sm:w-32">
+                                Voltar
+                            </button>
+
+                            <span class="py-6 text-center text-yellow-400 font-semibold text-sm">
+                                @Html.ActionLink("Já possui conta? Entrar", "Login", "Authentication")
+                            </span>
+
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </section>
+    </main>
+
+    @Scripts.Render("~/bundles/api")
+
+</body>
+</html>
+@ViewBag.msg
