@@ -27,7 +27,8 @@ namespace TCCVetCare.Controllers
         public ActionResult RegisterCustomer(CustomerModel customer)
         {
             if (!ModelState.IsValid)
-                return View(customer);
+                if (!ModelState.IsValid)
+                    return View(customer);
             string cpf = query.SelectCPFCustomer(customer.cpfCustomer);
             string email = query.SelectEmailCustomer(customer.emailCustomer);
             if (cpf == customer.cpfCustomer && email == customer.emailCustomer)

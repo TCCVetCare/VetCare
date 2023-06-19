@@ -13,25 +13,26 @@ namespace TCCVetCare.Models
         public string idCustomer { get; set; }
 
         [Display(Name = "Nome")]
-        [Required(ErrorMessage = "Informe o nome do cliente")]
+        [Required(ErrorMessage = "Informe seu nome")]
         [MaxLength(80, ErrorMessage = "O nome deve conter no maximo 255 caracteres")]
         public string nameCustomer { get; set; }
 
         [Display(Name = "Número do CPF")]
-        [Required(ErrorMessage = "Digite o CPF do cliente")]
+        [Required(ErrorMessage = "Informe seu CPF")]
         [MaxLength(11, ErrorMessage = "O CPF deve conter no maximo 11 caracteres")]
         [MinLength(11, ErrorMessage = "O CPF deve conter no minimo 11 caracters")]
 
         public string cpfCustomer { get; set; }
 
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "Informe o  email do cliente")]
-        [MaxLength(50, ErrorMessage = "o Email deve conter no maximo 15 caracteres")]
+        [Required(ErrorMessage = "Informe seu email")]
+        [MaxLength(50, ErrorMessage = "O email deve conter no maximo 15 caracteres")]
         [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\-][a-zA-Z ])?[a-zA-Z]*)*\s+<(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})>$|^(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})$", ErrorMessage = "Digite um Email válido")]
         public string emailCustomer { get; set; }
 
 
-        [MaxLength(9, ErrorMessage = "a senha deve conter no maximo 8 caracteres")]
+        [MaxLength(9, ErrorMessage = "Senha deve conter no maximo 8 caracteres")]
+        [Required(ErrorMessage = "Digite a senha")]
         [Display(Name = "Password")]
         public string passwordCustomer { get; set; }
 
@@ -55,12 +56,11 @@ namespace TCCVetCare.Models
         public string streetName { get; set; }
 
 
-        [Display(Name = "NÃºmero do logradouro")]
-        [Required(ErrorMessage = "Digite o nÃºmero do logradouro")]
+        [Display(Name = "Número do logradouro")]
+        [Required(ErrorMessage = "Digite o número do logradouro")]
         public string streetNumber { get; set; }
 
         [Display(Name = "Complemento")]
-        [Required(ErrorMessage = "Digite o complemento")]
         public string addressComplement { get; set; }
 
 

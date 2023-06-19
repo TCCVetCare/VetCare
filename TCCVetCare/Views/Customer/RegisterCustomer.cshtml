@@ -37,7 +37,9 @@
                             <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
                                 <i class="material-icons">person</i>
                             </span>
-                            @Html.ValidationMessageFor(m => m.nameCustomer)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.nameCustomer)
+                            </span>
                         </label>
 
                         <label for="customer-cpf" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
@@ -45,7 +47,9 @@
                             <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
                                 <i class="material-icons">badge</i>
                             </span>
-                            @Html.ValidationMessageFor(m => m.cpfCustomer)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.cpfCustomer)
+                            </span>
                         </label>
 
                         <label for="customer-phone" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
@@ -53,7 +57,9 @@
                             <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
                                 <i class="material-icons">phone</i>
                             </span>
-                            @Html.ValidationMessageFor(m => m.phoneCustomer)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.phoneCustomer)
+                            </span>
                         </label>
 
                         <label for="customer-email" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
@@ -61,52 +67,70 @@
                             <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
                                 <i class="material-icons">alternate_email</i>
                             </span>
-                            @Html.ValidationMessageFor(m => m.emailCustomer)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.emailCustomer)
+                            </span>
                         </label>
 
                         <label for="customer-password" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
-                            @Html.PasswordFor(m => m.passwordCustomer, new { @id = "customer-password", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Senha" })
+                            @Html.EditorFor(m => m.passwordCustomer, new { htmlAttributes = new { @id = "customer-password", @type = "password", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Senha" } })
                             <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
                                 <i class="material-icons">lock</i>
                             </span>
-                            @Html.ValidationMessageFor(m => m.passwordCustomer)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.passwordCustomer)
+                            </span>
                         </label>
 
                         <legend class="py-4 uppercase text-left">Endereço</legend>
 
                         <label for="zip-code" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.zipCode, new { @id = "zip-code", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "CEP", oninput = "searchAddressByZipCode()" })
-                            @Html.ValidationMessageFor(m => m.zipCode)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.zipCode)
+                            </span>
                         </label>
 
                         <label for="street-name" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.streetName, new { @id = "street-name", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Logradouro", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(m => m.streetName)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.streetName)
+                            </span>
                         </label>
 
                         <label for="street-number" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.streetNumber, new { @id = "street-number", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Número do Logradouro" })
-                            @Html.ValidationMessageFor(m => m.streetNumber)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.streetNumber)
+                            </span>
                         </label>
 
                         <label for="address-complement" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.addressComplement, new { @id = "address-complement", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Complemento" })
-                            @Html.ValidationMessageFor(m => m.addressComplement)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.addressComplement)
+                            </span>
                         </label>
 
                         <label for="neighborhood" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.neighborhood, new { @id = "neighborhood", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Bairro", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(m => m.neighborhood)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.neighborhood)
+                            </span>
                         </label>
 
                         <label for="city" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.city, new { @id = "city", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Cidade", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(m => m.city)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.city)
+                            </span>
                         </label>
 
                         <label for="state" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.TextBoxFor(m => m.state, new { @id = "state", @class = "w-60 md:w-72 h-10 pl-4 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Estado", @readonly = "readonly" })
-                            @Html.ValidationMessageFor(m => m.state)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.state)
+                            </span>
                         </label>
 
                         <div class="w-full h-auto pt-10 flex flex-col gap-4 justify-center items-center">

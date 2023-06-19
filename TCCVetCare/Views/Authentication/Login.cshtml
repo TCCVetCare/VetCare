@@ -35,22 +35,24 @@
 
                         @Html.AntiForgeryToken()
 
-                        <label for="customer-email" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
-                            @Html.TextBoxFor(m => m.Email, new { @id = "customer-email", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Email" })
-                            <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
-
-                                <i class="material-icons">alternate_email</i>
-
-                            </span>
+                    <label for="customer-email" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
+                        @Html.TextBoxFor(m => m.Email, new { @id = "customer-email", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Email" })
+                        <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
+                            <i class="material-icons">alternate_email</i>
+                        </span>
+                        <span class="block py-1 text-red-500">
                             @Html.ValidationMessageFor(m => m.Email)
-                        </label>
+                        </span>
+                    </label>
 
                         <label for="customer-password" class="w-auto max-w-xs pt-2 relative text-sm text-neutral-900">
                             @Html.PasswordFor(m => m.Password, new { @id = "customer-password", @class = "w-60 md:w-72 h-10 pl-8 bg-zinc-300 rounded-lg border-none outline-none placeholder:text-neutral-900", placeholder = "Senha" })
                             <span class="absolute top-0 left-0 translate-y-4 translate-x-1 text-neutral-900">
                                 <i class="material-icons">lock</i>
                             </span>
-                            @Html.ValidationMessageFor(m => m.Password)
+                            <span class="block py-1 text-red-500">
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </span>
                         </label>
 
                     </div>
